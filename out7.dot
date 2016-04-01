@@ -1,0 +1,14 @@
+//Warning: the node attribute "test" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the node attribute "edgeAnchor" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the node attribute "labelAnchor" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the node attribute "graphics" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the node attribute "edgeAnchor" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the node attribute "labelAnchor" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the node attribute "graphics" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the edge attribute "labelAnchor" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the edge attribute "graphics" was parsed but is not supported by DOT,so it will not be translated.
+graph G {
+	7 [label = "5"];
+	15 [label = "13"];
+	7 -- 15 [label = "24"];
+}

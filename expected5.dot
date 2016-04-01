@@ -1,0 +1,12 @@
+
+//Warning: the graph attribute "hierarchic" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the node attribute "graphics" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the node attribute "LabelGraphics" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the node attribute "graphics" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the node attribute "LabelGraphics" was parsed but is not supported by DOT,so it will not be translated.
+//Warning: the edge attribute "LabelGraphics" was parsed but is not supported by DOT,so it will not be translated.
+digraph G {
+        0 [];
+        1 [];
+        1 -> 0 [];
+}

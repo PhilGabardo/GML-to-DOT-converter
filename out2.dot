@@ -1,0 +1,13 @@
+//Warning: the graph attribute "defaultnodesize" was parsed but is not supported by DOT,so it will not be translated.
+graph G {
+	label = "My graph";
+	URL = "www.test.com";
+	comment = "This is a test";
+	1 [label = "Node 1"];
+	2 [label = "Node 2"];
+	3 [label = "Node 3"];
+	4 [label = "test"];
+	1 -- 2 [label = "Edge from node 1 to node 2"];
+	2 -- 3 [label = "Edge from node 2 to node 3"];
+	3 -- 1 [label = "Edge from node 3 to node 1"];
+}

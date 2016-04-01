@@ -1,0 +1,66 @@
+\begin{thebibliography}{10}
+
+\bibitem{NUWEB}
+Preston Briggs.
+\newblock Nuweb version 1.57 a simple literate programming too.
+\newblock \url{http://nuweb.sourceforge.net/nuwebdoc.pdf}.
+
+\bibitem{DOT}
+Emden Gansner.
+\newblock Drawing graphs with dot.
+\newblock \url{http://www.graphviz.org/pdf/dotguide.pdf}, 2015.
+
+\bibitem{GDF}
+Gephi.
+\newblock Gdf format.
+\newblock \url{https://gephi.org/users/supported-graph-formats/gdf-format/}.
+
+\bibitem{GRAPHML}
+Gephi.
+\newblock Graphml format.
+\newblock
+  \url{https://gephi.org/users/supported-graph-formats/graphml-format/}.
+
+\bibitem{GML}
+Michael Himsolt.
+\newblock Gml: A portable graph file format.
+\newblock
+  \url{https://www.fim.uni-passau.de/fileadmin/files/lehrstuhl/brandenburg/projekte/gml/gml-technical-report.pdf}.
+
+\bibitem{ANTLR4}
+Terence Parr.
+\newblock Antlr 4 documentation.
+\newblock \url{https://github.com/antlr/antlr4/blob/master/doc/index.md}, 2015.
+
+\bibitem{TESTBENCH22}
+Irvine University~of California.
+\newblock adjnoun.gml.
+\newblock \url{http://networkdata.ics.uci.edu/data/adjnoun/adjnoun.gml}.
+
+\bibitem{TESTBENCH21}
+Irvine University~of California.
+\newblock dolphins.gml.
+\newblock \url{http://networkdata.ics.uci.edu/data/dolphins/dolphins.gml}.
+
+\bibitem{TESTBENCH23}
+Irvine University~of California.
+\newblock football.gml.
+\newblock \url{http://networkdata.ics.uci.edu/data/football/football.gml}.
+
+\bibitem{TESTBENCH24}
+Irvine University~of California.
+\newblock karate.gml.
+\newblock \url{http://networkdata.ics.uci.edu/data/karate/karate.gml}.
+
+\bibitem{TESTBENCH2}
+Irvine University~of California.
+\newblock Network data repository.
+\newblock \url{http://networkdata.ics.uci.edu/}.
+
+\bibitem{YWORKS}
+yWorks.
+\newblock yworks.
+\newblock
+  \url{https://gephi.org/users/supported-graph-formats/graphml-format/}.
+
+\end{thebibliography}

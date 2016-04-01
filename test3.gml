@@ -1,0 +1,36 @@
+
+graph [
+comment "This is a test"
+node [
+id 1
+label "Node 1"
+]
+node [
+id 2
+label "Node 2"
+]
+edge [
+source 1
+target 2
+label "Edge from node 1 to node 2"
+]
+node [
+id 3
+label "Node 3"
+]
+node [
+id 4
+label "test"
+]
+edge [
+source 2
+target 3
+label "Edge from node 2 to node 3"
+]
+edge [
+source 3
+target 1 label
+"Edge from node 3 to node 1"
+]
+label "My graph"
+]
