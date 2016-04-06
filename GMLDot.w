@@ -90,7 +90,7 @@ graph [
 
 There are several other languages that closely resemble GML, such as GDF\cite{GDF}, GraphML\cite{GRAPHML}, and DOT\cite{DOT}.
 
-GML is widely used, and is the standard file format in the Graphlet graph editor system.
+GML is widely used, and is the standard file format in the Graphlet graph editor system\cite{GRAPHLET}.
 
 A major drawback of GML is its lack of direct graph translation to png or pdf images, which is essential to users would who like to visualize their graphs. Consequently, many users choose languages such as DOT, which can produce png and pdf images to represent their graphs, despite GML's attempt to become a universal file format for graphs.
 
@@ -120,7 +120,7 @@ The following tools were used for this project:
 \begin{itemize}
 \item \textbf{ANTLR4}\cite{ANTLR4} was be used to generate DOT code from given GML code. ANTLR4 was chosen for two main reasons. First, ANTLR4 is proven to produce correct grammars. The generated parser accepts exactly the language specified in the grammar. If a recursive descent parser was used instead, there would be no immediate proof of correctness, and no easy way to test it. Secondly, ANTLR4 was chosen for its speedy development time. The parser and lexer rules can be constructed extremely fast.
 \item \textbf{DOT}\cite{DOT} was used to draw the graphs. DOT was chosen because it is can automatically place nodes and edges such that there is minimal overlap (developing this kind of algorithm is outside the scope of this course). Furthermore, DOT has a command-line tool for producing png and pdf files, which many other graph languages that have automatic placement lack. For example, yWorks\cite{YWORKS} requires the user to import their graphs to an editor in order to view them.
-\item \textbf{nuweb}\cite{NUWEB} was be used to document the project. nuweb was chosen because it supports any programming language (there are no literate programming tools specificly targetted for ANTLR), it is documented well, and it has plenty of user support through forums. nuweb was chosen over noweb because noweb is heavily Unix-dependent, and requires many third party programs in order to be built.
+\item \textbf{nuweb}\cite{NUWEB} was used to document the project. nuweb was chosen because it supports any programming language (there are no literate programming tools specificly targetted for ANTLR), it is documented well, and it has plenty of user support through forums. nuweb was chosen over noweb because noweb is heavily Unix-dependent, and requires many third party programs in order to be built.
 \end{itemize}
 
 \chapter{Implementation}
@@ -128,7 +128,10 @@ The high-level flow of steps for the compiler is as follows:
 \begin{enumerate}
 \item Parse the GML file to elicit an object based representation of the graphs.
 \item Convert the object based representation of the graphs to DOT.
+\item Convert the DOT code to png.
 \end{enumerate}
+
+This report will focus on the first two steps. The third step is trivial and can executed using the command: \begin{verbatim} dot -Tpng infile.dot -o outfile.png \end{verbatim}. 
 
 The ANTLR compiler is organized as follows: 
 @o GMLDot.g4 
@@ -270,7 +273,7 @@ for(String key: keys){
 }   
 @}
 
-Then, the parsed nodes are printed in DOT format ($<$NODE\_ID$>$ [$<$ATTRIBUTE1$>$ = $<$VALUE1$>$, $<$ATTRIBUTE2$>$ = $<$VALUE2$>$, ..., $<$ATTRIBUTEN$>$ = $<$VALUEN$>$]). The 'id' attribute is printed first and then deleted from the hash map of attributes, so that it will not be printed with other node attributes. Then, the node attributes are printed. This is easily done by iterating over hash map of node attributes.
+Then, the parsed nodes are printed in DOT format ($<$NODE\_ID$>$ [$<$ATTRIBUTE\_1$>$ = $<$VALUE\_1$>$, $<$ATTRIBUTE\_2$>$ = $<$VALUE\_2$>$, ..., $<$ATTRIBUTE\_N$>$ = $<$VALUE\_N$>$]). The 'id' attribute is printed first and then deleted from the hash map of attributes, so that it will not be printed with other node attributes. Then, the node attributes are printed. This is easily done by iterating over hash map of node attributes.
 @d Print Nodes
 @{
 for (Node node: nodes){
@@ -289,7 +292,7 @@ for (Node node: nodes){
 @}
 
 
-Finally, the parsed edges are printed in DOT format ($<$SOURCE\_NODE\_ID$>$ (-- if undirected | -> if directed) $<$TARGET\_NODE\_ID$>$ [$<$ATTRIBUTE1$>$ = $<$VALUE1$>$, $<$ATTRIBUTE2$>$ = $<$VALUE2$>$, ..., $<$ATTRIBUTEN$>$ = $<$VALUEN$>$]. The 'source' and 'target' attributes are printed first and then deleted from the hash map of attributes, so that they will not be printed with other edge attributes. Then, the edge attributes are printed. This is done easily by iterating over the hash map of attributes for the edge. 
+Finally, the parsed edges are printed in DOT format ($<$SOURCE\_NODE\_ID$>$ (-- if undirected $|$ -$>$ if directed) $<$TARGET\_NODE\_ID$>$ [$<$ATTRIBUTE\_1$>$ = $<$VALUE\_1$>$, $<$ATTRIBUTE\_2$>$ = $<$VALUE\_2$>$, ..., $<$ATTRIBUTE\_N$>$ = $<$VALUE\_N$>$]. The 'source' and 'target' attributes are printed first and then deleted from the hash map of attributes, so that they will not be printed with other edge attributes. Then, the edge attributes are printed. This is done easily by iterating over the hash map of attributes for the edge. 
 @d Print Edges
 @{
 for (Edge edge: edges){
@@ -333,7 +336,7 @@ r: graph;
 
 
 
-The graph rule is initialized with two empty lists for its nodes and edges and a hashmap for its attributes. The rule recognizes the keyword ``graph'', followed by an opening square bracket, followed by a series of nodes, edges, or graph attribute declarations in no specific order (according to https://www.fim.uni-passau.de/fileadmin/files/lehrstuhl/brandenburg/projekte/gml/gml-technical-report.pdf, ``It (GML) should be flexible enough that a specific order of declarations is not needed''), terminated by a closing square bracket. Whenever a node is parsed, it is added to the list of nodes. Similarly, whenever an edge is parsed, it is added to the list of edges. Whenever a graph attribute is parsed, the attribute name and value is added as a key value pair to the graph attribute hash map. When the terminating square bracket is parsed, a Graph object is created using the objects initialized at the beginning of the rule. The toDot() method is called to print the DOT representation of the graph. 
+The graph rule is initialized with two empty lists for its nodes and edges and a hashmap for its attributes. The rule recognizes the keyword ``graph'', followed by an opening square bracket, followed by a series of nodes, edges, or graph attribute declarations in no specific order (according to \cite{GML}, ``It (GML) should be flexible enough that a specific order of declarations is not needed''), terminated by a closing square bracket. Whenever a node is parsed, it is added to the list of nodes. Similarly, whenever an edge is parsed, it is added to the list of edges. Whenever a graph attribute is parsed, the attribute name and value is added as a key value pair to the graph attribute hash map. When the terminating square bracket is parsed, a Graph object is created using the objects initialized at the beginning of the rule. The toDot() method is called to print the DOT representation of the graph. 
 @d Graph Rule
 @{
 graph
@@ -401,7 +404,7 @@ edgeAttrDeclarations returns [HashMap<String, String> declarations]
 @}
 
 
-The graphAttrDeclaration rule parses a graph attribute and returns a hash map. If the attribute is translatable to DOT, then the hash map includes a single key-value pair where the key is the attribute and the value is the corresponding attribute value. If the attribute is not translatable to DOT, a comment is printed that warns the user that the graph attribute was parsed but will not be translated, and the hash map that is returned is empty.
+The graphAttrDeclaration rule parses a graph attribute and returns a hash map. If the attribute is translatable to DOT, then the hash map includes a single key-value pair where the key is the attribute and the value is the corresponding attribute value. If the attribute is not translatable to DOT, a comment is printed that warns the user that the graph attribute was parsed but will not be translated, and the hash map that is returned is empty. Non-translatable attribute are parsed to improve the flexibility of the translation. 
 @d Graph Attribute Declaration Rule
 @{
 graphAttrDeclaration returns [HashMap<String, String> declaration]
@@ -410,10 +413,10 @@ graphAttrDeclaration returns [HashMap<String, String> declaration]
 {
 	$declaration.put($graphAttribute.text, $VALUE.text);
 }
-| (unsupportedAttribute (VALUE | section)) 
+| (nonTranslatableAttribute (VALUE | section)) 
 {
 	System.out.printf("//Warning: the graph attribute \"%s\" was parsed but is not "
-		+ "supported by DOT,so it will not be translated.\n", $unsupportedAttribute.text);
+		+ "supported by DOT,so it will not be translated.\n", $nonTranslatableAttribute.text);
 };
 @}
 
@@ -426,10 +429,10 @@ nodeAttrDeclaration returns [HashMap<String, String> declaration]
 {
 	$declaration.put($nodeAttribute.text, $VALUE.text);
 } 
-| (unsupportedAttribute (VALUE | section)) 
+| (nonTranslatableAttribute (VALUE | section)) 
 {
 	System.out.printf("//Warning: the node attribute \"%s\" was parsed but is not"
-		+ " supported by DOT,so it will not be translated.\n", $unsupportedAttribute.text);
+		+ " supported by DOT,so it will not be translated.\n", $nonTranslatableAttribute.text);
 };
 @}
 
@@ -442,10 +445,10 @@ edgeAttrDeclaration returns [HashMap<String, String> declaration]
 {
 	$declaration.put($edgeAttribute.text, $VALUE.text);
 }
-| (unsupportedAttribute (VALUE | section))
+| (nonTranslatableAttribute (VALUE | section))
 {
 	System.out.printf("//Warning: the edge attribute \"%s\" was parsed but is not"
-		+ " supported by DOT,so it will not be translated.\n", $unsupportedAttribute.text);
+		+ " supported by DOT,so it will not be translated.\n", $nonTranslatableAttribute.text);
 };
 @}
 
@@ -473,11 +476,11 @@ graphAttributeDeclaration, nodeAttrDeclaration and edgeAttrDeclaration rules are
 unsupported attributes.
 @d Unsupported Attribute Rule
 @{
-unsupportedAttribute:  WORD;
+nonTranslatableAttribute:  WORD;
 @}
 
 
-Some unsupported attributes have 'sections' as values. A section is defined recursively as follows:
+Some unsupported attributes have 'sections' as values. A section is defined recursively as zero or more attribute declarations (word-value pairs), followed by zero or more attribute declarations where the value is a section, followed by zero or more attribute declarations, enclosed in square brackets:
 @d Section Rule
 @{
 section: '[' (WORD VALUE)*  (WORD section)* (WORD VALUE)* ']';
@@ -530,9 +533,9 @@ WS : [ \t\r\n]+ -> skip;
 
 Two test benches were used for testing the compiler. 
 
-The first test bench was generated manually, and consists of a set of GML files and corresponding expected DOT files. The GML files were constructed to test edge cases of the compilation process. For each test case, the GML file was compiled and the outputted DOT file was diffed with the expected DOT file. If there were no differences, the test passed. Otherwise, the test failed.
+The first test bench was generated manually, and consists of seven GML files and corresponding expected DOT files. The GML files were constructed to test edge cases of the compilation process. For each test case, the GML file was compiled and the outputted DOT file was diffed with the expected DOT file. If there were no differences, the test passed. Otherwise, the test failed.
 
-The second test bench was derived from an online source \cite{TESTBENCH2}, and consists only of GML files. Each GML file is extremely large. For each test case, the GML file was compiled and a png was generated fromt the outputted DOT file. The png was inspected for correctness.
+The second test bench was derived from an online source \cite{TESTBENCH2}, and consists only of four GML files. Each GML file is extremely large. For each test case, the GML file was compiled and a png was generated fromt the outputted DOT file. The png was inspected for correctness. The inspection required randomly choosing two nodes connected by an edge in the png and checking for their existence in the GML. 
 
 All test cases passed.
 \newpage

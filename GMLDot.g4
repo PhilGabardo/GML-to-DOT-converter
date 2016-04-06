@@ -159,10 +159,10 @@ graphAttrDeclaration returns [HashMap<String, String> declaration]
 {
         $declaration.put($graphAttribute.text, $VALUE.text);
 }
-| (unsupportedAttribute (VALUE | section)) 
+| (nonTranslatableAttribute (VALUE | section)) 
 {
         System.out.printf("//Warning: the graph attribute \"%s\" was parsed but is not "
-                + "supported by DOT,so it will not be translated.\n", $unsupportedAttribute.text);
+                + "supported by DOT,so it will not be translated.\n", $nonTranslatableAttribute.text);
 };
 
 
@@ -182,10 +182,10 @@ nodeAttrDeclaration returns [HashMap<String, String> declaration]
 {
         $declaration.put($nodeAttribute.text, $VALUE.text);
 } 
-| (unsupportedAttribute (VALUE | section)) 
+| (nonTranslatableAttribute (VALUE | section)) 
 {
         System.out.printf("//Warning: the node attribute \"%s\" was parsed but is not"
-                + " supported by DOT,so it will not be translated.\n", $unsupportedAttribute.text);
+                + " supported by DOT,so it will not be translated.\n", $nonTranslatableAttribute.text);
 };
 
 
@@ -195,10 +195,10 @@ edgeAttrDeclaration returns [HashMap<String, String> declaration]
 {
         $declaration.put($edgeAttribute.text, $VALUE.text);
 }
-| (unsupportedAttribute (VALUE | section))
+| (nonTranslatableAttribute (VALUE | section))
 {
         System.out.printf("//Warning: the edge attribute \"%s\" was parsed but is not"
-                + " supported by DOT,so it will not be translated.\n", $unsupportedAttribute.text);
+                + " supported by DOT,so it will not be translated.\n", $nonTranslatableAttribute.text);
 };
 
 
@@ -211,7 +211,7 @@ nodeAttribute: 'id' | 'name' | 'label' | 'comment';
 edgeAttribute: 'source' | 'target' | 'label' | 'comment';
 
 
-unsupportedAttribute:  WORD;
+nonTranslatableAttribute:  WORD;
 
 
 section: '[' (WORD VALUE)*  (WORD section)* (WORD VALUE)* ']';

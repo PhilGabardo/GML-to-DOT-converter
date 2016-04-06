@@ -165,13 +165,13 @@ public class GMLDotBaseListener implements GMLDotListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnsupportedAttribute(GMLDotParser.UnsupportedAttributeContext ctx) { }
+	@Override public void enterNonTranslatableAttribute(GMLDotParser.NonTranslatableAttributeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnsupportedAttribute(GMLDotParser.UnsupportedAttributeContext ctx) { }
+	@Override public void exitNonTranslatableAttribute(GMLDotParser.NonTranslatableAttributeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

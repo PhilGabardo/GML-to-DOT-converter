@@ -28,11 +28,11 @@ public class GMLDotParser extends Parser {
 		RULE_r = 0, RULE_graph = 1, RULE_node = 2, RULE_edge = 3, RULE_graphAttrDeclaration = 4, 
 		RULE_nodeAttrDeclarations = 5, RULE_edgeAttrDeclarations = 6, RULE_nodeAttrDeclaration = 7, 
 		RULE_edgeAttrDeclaration = 8, RULE_graphAttribute = 9, RULE_nodeAttribute = 10, 
-		RULE_edgeAttribute = 11, RULE_unsupportedAttribute = 12, RULE_section = 13;
+		RULE_edgeAttribute = 11, RULE_nonTranslatableAttribute = 12, RULE_section = 13;
 	public static final String[] ruleNames = {
 		"r", "graph", "node", "edge", "graphAttrDeclaration", "nodeAttrDeclarations", 
 		"edgeAttrDeclarations", "nodeAttrDeclaration", "edgeAttrDeclaration", 
-		"graphAttribute", "nodeAttribute", "edgeAttribute", "unsupportedAttribute", 
+		"graphAttribute", "nodeAttribute", "edgeAttribute", "nonTranslatableAttribute", 
 		"section"
 	};
 
@@ -449,13 +449,13 @@ public class GMLDotParser extends Parser {
 		public HashMap<String, String> declaration;
 		public GraphAttributeContext graphAttribute;
 		public Token VALUE;
-		public UnsupportedAttributeContext unsupportedAttribute;
+		public NonTranslatableAttributeContext nonTranslatableAttribute;
 		public GraphAttributeContext graphAttribute() {
 			return getRuleContext(GraphAttributeContext.class,0);
 		}
 		public TerminalNode VALUE() { return getToken(GMLDotParser.VALUE, 0); }
-		public UnsupportedAttributeContext unsupportedAttribute() {
-			return getRuleContext(UnsupportedAttributeContext.class,0);
+		public NonTranslatableAttributeContext nonTranslatableAttribute() {
+			return getRuleContext(NonTranslatableAttributeContext.class,0);
 		}
 		public SectionContext section() {
 			return getRuleContext(SectionContext.class,0);
@@ -503,7 +503,7 @@ public class GMLDotParser extends Parser {
 				{
 				{
 				setState(66);
-				((GraphAttrDeclarationContext)_localctx).unsupportedAttribute = unsupportedAttribute();
+				((GraphAttrDeclarationContext)_localctx).nonTranslatableAttribute = nonTranslatableAttribute();
 				setState(69);
 				switch (_input.LA(1)) {
 				case VALUE:
@@ -524,7 +524,7 @@ public class GMLDotParser extends Parser {
 				}
 
 				        System.out.printf("//Warning: the graph attribute \"%s\" was parsed but is not "
-				                + "supported by DOT,so it will not be translated.\n", (((GraphAttrDeclarationContext)_localctx).unsupportedAttribute!=null?_input.getText(((GraphAttrDeclarationContext)_localctx).unsupportedAttribute.start,((GraphAttrDeclarationContext)_localctx).unsupportedAttribute.stop):null));
+				                + "supported by DOT,so it will not be translated.\n", (((GraphAttrDeclarationContext)_localctx).nonTranslatableAttribute!=null?_input.getText(((GraphAttrDeclarationContext)_localctx).nonTranslatableAttribute.start,((GraphAttrDeclarationContext)_localctx).nonTranslatableAttribute.stop):null));
 
 				}
 				break;
@@ -665,13 +665,13 @@ public class GMLDotParser extends Parser {
 		public HashMap<String, String> declaration;
 		public NodeAttributeContext nodeAttribute;
 		public Token VALUE;
-		public UnsupportedAttributeContext unsupportedAttribute;
+		public NonTranslatableAttributeContext nonTranslatableAttribute;
 		public NodeAttributeContext nodeAttribute() {
 			return getRuleContext(NodeAttributeContext.class,0);
 		}
 		public TerminalNode VALUE() { return getToken(GMLDotParser.VALUE, 0); }
-		public UnsupportedAttributeContext unsupportedAttribute() {
-			return getRuleContext(UnsupportedAttributeContext.class,0);
+		public NonTranslatableAttributeContext nonTranslatableAttribute() {
+			return getRuleContext(NonTranslatableAttributeContext.class,0);
 		}
 		public SectionContext section() {
 			return getRuleContext(SectionContext.class,0);
@@ -719,7 +719,7 @@ public class GMLDotParser extends Parser {
 				{
 				{
 				setState(96);
-				((NodeAttrDeclarationContext)_localctx).unsupportedAttribute = unsupportedAttribute();
+				((NodeAttrDeclarationContext)_localctx).nonTranslatableAttribute = nonTranslatableAttribute();
 				setState(99);
 				switch (_input.LA(1)) {
 				case VALUE:
@@ -740,7 +740,7 @@ public class GMLDotParser extends Parser {
 				}
 
 				        System.out.printf("//Warning: the node attribute \"%s\" was parsed but is not"
-				                + " supported by DOT,so it will not be translated.\n", (((NodeAttrDeclarationContext)_localctx).unsupportedAttribute!=null?_input.getText(((NodeAttrDeclarationContext)_localctx).unsupportedAttribute.start,((NodeAttrDeclarationContext)_localctx).unsupportedAttribute.stop):null));
+				                + " supported by DOT,so it will not be translated.\n", (((NodeAttrDeclarationContext)_localctx).nonTranslatableAttribute!=null?_input.getText(((NodeAttrDeclarationContext)_localctx).nonTranslatableAttribute.start,((NodeAttrDeclarationContext)_localctx).nonTranslatableAttribute.stop):null));
 
 				}
 				break;
@@ -763,13 +763,13 @@ public class GMLDotParser extends Parser {
 		public HashMap<String, String> declaration;
 		public EdgeAttributeContext edgeAttribute;
 		public Token VALUE;
-		public UnsupportedAttributeContext unsupportedAttribute;
+		public NonTranslatableAttributeContext nonTranslatableAttribute;
 		public EdgeAttributeContext edgeAttribute() {
 			return getRuleContext(EdgeAttributeContext.class,0);
 		}
 		public TerminalNode VALUE() { return getToken(GMLDotParser.VALUE, 0); }
-		public UnsupportedAttributeContext unsupportedAttribute() {
-			return getRuleContext(UnsupportedAttributeContext.class,0);
+		public NonTranslatableAttributeContext nonTranslatableAttribute() {
+			return getRuleContext(NonTranslatableAttributeContext.class,0);
 		}
 		public SectionContext section() {
 			return getRuleContext(SectionContext.class,0);
@@ -817,7 +817,7 @@ public class GMLDotParser extends Parser {
 				{
 				{
 				setState(110);
-				((EdgeAttrDeclarationContext)_localctx).unsupportedAttribute = unsupportedAttribute();
+				((EdgeAttrDeclarationContext)_localctx).nonTranslatableAttribute = nonTranslatableAttribute();
 				setState(113);
 				switch (_input.LA(1)) {
 				case VALUE:
@@ -838,7 +838,7 @@ public class GMLDotParser extends Parser {
 				}
 
 				        System.out.printf("//Warning: the edge attribute \"%s\" was parsed but is not"
-				                + " supported by DOT,so it will not be translated.\n", (((EdgeAttrDeclarationContext)_localctx).unsupportedAttribute!=null?_input.getText(((EdgeAttrDeclarationContext)_localctx).unsupportedAttribute.start,((EdgeAttrDeclarationContext)_localctx).unsupportedAttribute.stop):null));
+				                + " supported by DOT,so it will not be translated.\n", (((EdgeAttrDeclarationContext)_localctx).nonTranslatableAttribute!=null?_input.getText(((EdgeAttrDeclarationContext)_localctx).nonTranslatableAttribute.start,((EdgeAttrDeclarationContext)_localctx).nonTranslatableAttribute.stop):null));
 
 				}
 				break;
@@ -983,25 +983,25 @@ public class GMLDotParser extends Parser {
 		return _localctx;
 	}
 
-	public static class UnsupportedAttributeContext extends ParserRuleContext {
+	public static class NonTranslatableAttributeContext extends ParserRuleContext {
 		public TerminalNode WORD() { return getToken(GMLDotParser.WORD, 0); }
-		public UnsupportedAttributeContext(ParserRuleContext parent, int invokingState) {
+		public NonTranslatableAttributeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_unsupportedAttribute; }
+		@Override public int getRuleIndex() { return RULE_nonTranslatableAttribute; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GMLDotListener ) ((GMLDotListener)listener).enterUnsupportedAttribute(this);
+			if ( listener instanceof GMLDotListener ) ((GMLDotListener)listener).enterNonTranslatableAttribute(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GMLDotListener ) ((GMLDotListener)listener).exitUnsupportedAttribute(this);
+			if ( listener instanceof GMLDotListener ) ((GMLDotListener)listener).exitNonTranslatableAttribute(this);
 		}
 	}
 
-	public final UnsupportedAttributeContext unsupportedAttribute() throws RecognitionException {
-		UnsupportedAttributeContext _localctx = new UnsupportedAttributeContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_unsupportedAttribute);
+	public final NonTranslatableAttributeContext nonTranslatableAttribute() throws RecognitionException {
+		NonTranslatableAttributeContext _localctx = new NonTranslatableAttributeContext(_ctx, getState());
+		enterRule(_localctx, 24, RULE_nonTranslatableAttribute);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{

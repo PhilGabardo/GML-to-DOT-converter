@@ -2,10 +2,12 @@
 \backcite {GDF}{{iii}{1.1}{section.1.1}}
 \backcite {GRAPHML}{{iii}{1.1}{section.1.1}}
 \backcite {DOT}{{iii}{1.1}{section.1.1}}
+\backcite {GRAPHLET}{{iii}{1.1}{section.1.1}}
 \backcite {ANTLR4}{{iii}{1.2}{section.1.2}}
 \backcite {DOT}{{iv}{1.2}{section.1.2}}
 \backcite {YWORKS}{{iv}{1.2}{section.1.2}}
 \backcite {NUWEB}{{iv}{1.2}{section.1.2}}
+\backcite {GML}{{ix}{2.2}{section.2.2}}
 \backcite {TESTBENCH2}{{xiv}{2.3}{section.2.3}}
 \backcite {TESTBENCH21}{{xxiv}{2.3.2}{section*.9}}
 \backcite {TESTBENCH21}{{xxv}{2.3.2}{section*.10}}

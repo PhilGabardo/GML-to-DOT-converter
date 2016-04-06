@@ -27,6 +27,11 @@ Michael Himsolt.
 \newblock
   \url{https://www.fim.uni-passau.de/fileadmin/files/lehrstuhl/brandenburg/projekte/gml/gml-technical-report.pdf}.
 
+\bibitem{GRAPHLET}
+Michael Himsolt.
+\newblock Graphlet.
+\newblock \url{http://wiki.tcl.tk/6730}.
+
 \bibitem{ANTLR4}
 Terence Parr.
 \newblock Antlr 4 documentation.

@@ -133,15 +133,15 @@ public interface GMLDotListener extends ParseTreeListener {
 	 */
 	void exitEdgeAttribute(GMLDotParser.EdgeAttributeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GMLDotParser#unsupportedAttribute}.
+	 * Enter a parse tree produced by {@link GMLDotParser#nonTranslatableAttribute}.
 	 * @param ctx the parse tree
 	 */
-	void enterUnsupportedAttribute(GMLDotParser.UnsupportedAttributeContext ctx);
+	void enterNonTranslatableAttribute(GMLDotParser.NonTranslatableAttributeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GMLDotParser#unsupportedAttribute}.
+	 * Exit a parse tree produced by {@link GMLDotParser#nonTranslatableAttribute}.
 	 * @param ctx the parse tree
 	 */
-	void exitUnsupportedAttribute(GMLDotParser.UnsupportedAttributeContext ctx);
+	void exitNonTranslatableAttribute(GMLDotParser.NonTranslatableAttributeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GMLDotParser#section}.
 	 * @param ctx the parse tree
