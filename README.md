@@ -4,7 +4,7 @@ A tool to translate graphs defined in GML to DOT.
 Read GMLDot.pdf for details.
 
 
-To generate the ANTLR4 file (GMLDot.g4), the tex file (GMLDot.tex) and all of the test cases (test*.gml and expected*.dot):
+To generate the ANTLR4 file (GMLDot.g4), the tex file (GMLDot.tex) and all of the test cases (test*.gml and expected*.dot):</br>
 1. Install nuweb from https://sourceforge.net/projects/nuweb/.
 2. Copy the nuweb executable to the project directory.
 3. Run `./nuweb -n GMLDot.w`
